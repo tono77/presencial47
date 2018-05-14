@@ -1,0 +1,54 @@
+<h1>Colors#index</h1>
+<p>Find me in app/views/colors/index.html.erb</p>
+
+
+<input type="text" value="34" class="dial" name="red" >
+<input type="text" value="255" class="dial" name="green">
+<input type="text" value="255" class="dial" name="blue">
+
+<h1>
+	RGB(<span id="red">0</span>,<span id="green">0</span>,<span id="blue">0</span>)
+</h1>
+
+<div class="cuadrado"></div>
+
+<style>
+	.cuadrado{
+		height: 600px;
+		width:600px;
+		border: 1px solid black;
+}
+</style>
+
+<script>
+
+	$(document).on('turbolinks:load',function(){
+		 $(".dial").knob({
+		 		'min':0,
+		 		'max':255,
+        'change' : function (v) { 
+        	$("span#"+this.$.attr('name')).html(Math.round(Number(v))); 
+				
+				red = $("#red").html();
+				green = $("#green").html();
+				blue = $("#blue").html();
+
+				$(".cuadrado").css("background-color", "rgb("+red+","+green+","+blue+")");
+
+        }
+    });
+
+	});
+    
+
+
+    //    $('.dial').trigger(
+    //     'configure',
+    //     {
+    //         "min":0,
+    //         "max":255,
+    //         "fgColor":"#FF0000",
+    //         "skin":"tron"        }
+    // );
+</script>
+
